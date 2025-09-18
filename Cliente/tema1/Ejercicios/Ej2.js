@@ -11,7 +11,8 @@ window.onload = function () {
         case "apple":
             alert(`Oh really, do you like ${name1}s?.`);
             break
-            
+        default:
+            alert("Introduce bien las frutas")
     }
     
 
