@@ -1,20 +1,82 @@
 window.onload = function () {
-    alert("Bienvenidos a esta web.")
     
-    const Ejercicio7 = function() {
-        
-            
-    }
     
-    for (let i = 0; i <= 10; i++) {
+    const Exercise7 = () => {
+        for (let i = 0; i <= 10; i++) {
             let multi = i * 9;
             console.log(`${i} x 9 = ${multi}`)
         }
-    
-    
+            
+    }
+    const Exercise8 = () => {
+        var array1 = [];
+        var array2 = [];
+        for (let j = 0; j < 3; j++) {
+            let num1 = parseInt(prompt("Enter a number:").trim());
+            array1.push(num1);
+        }
 
-    
-  
+        while (array1.length > 0) {
+            let min = Math.min(...array1);
+            let indice = array1.indexOf(min);
+            array2.push(min);
+            array1.splice(indice, 1); 
+        }
+        console.log(array2);
+            
+    }
+     const Exercise9 = () => {
+        const array3 = ["José", "Lola", "Lorenzo", "Mariluz", "Maria José"];
+        const name1 = prompt("Enter a usuari:", "usuari...").trim();
+        const name2 = name1.toLowerCase();
+        let count = 0;
+       
 
+        for (const t of array3) {//method with for
+            count++;
+            if (t.toLowerCase() == name2) {
+                alert(`Name found.`);
+                return
+            }else if (count == array3.length -1) {
+                alert(`${name1} is not a current teacher.`);
+            }
+        } 
+        const array5 = array3.reduce((acc, elem) =>{//method with reduce
+            if(elem.toLowerCase() == name2) {
+                return acc = alert(`Name found.`);
+            }
+            acc += 1
+            if (acc == array3.length -1) {
+                return acc = alert(`${name1} is not a current teacher.`);
+            }
+
+        }, )
+        // Of the two methods, I like the reduce method better because you can play with the acumulador 
+          
+    } 
     
+    alert(`He chooses the exercise to perform 7, 8 or 9 and to finish he enters 0.`);
+    let finish = true;
+    while(finish) {
+       
+        let op = parseInt(prompt("Enter a number:", "7, 8, 9 or 0").trim());
+        switch(op) {
+            case 7:
+                Exercise7();
+                break;
+            case 8:
+                Exercise8();
+                break;
+            case 9:
+                Exercise9();
+                break;
+            case 0:
+                alert("End of the exercises.");
+                finish = false;
+                break;
+            default:
+                alert("Invalid option!!");
+                alert(`He chooses the exercise to perform 7, 8 or 9 and to finish he enters 0.`);
+        }
+    }  
 }
