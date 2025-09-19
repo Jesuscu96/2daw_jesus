@@ -25,41 +25,79 @@ window.onload = function () {
         console.log(array2);
             
     }
-     const Exercise9 = () => {
+    const Exercise9 = () => {
         const array3 = ["José", "Lola", "Lorenzo", "Mariluz", "Maria José"];
-        const name1 = prompt("Enter a usuari:", "usuari...").trim();
-        const name2 = name1.toLowerCase();
+        const myName = prompt("Enter a usuari:", "usuari...").trim();
         let count = 0;
        
 
         for (const t of array3) {//method with for
             count++;
-            if (t.toLowerCase() == name2) {
+            if (t.toLowerCase() == myName.toLowerCase()) {
                 alert(`Name found.`);
                 return
             }else if (count == array3.length -1) {
-                alert(`${name1} is not a current teacher.`);
+                alert(`${myName} is not a current teacher.`);
             }
         } 
-        const array5 = array3.reduce((acc, elem) =>{//method with reduce
-            if(elem.toLowerCase() == name2) {
+        const array4 = array3.reduce((acc, elem) =>{//method with reduce
+            if(elem.toLowerCase() == myName.toLowerCase()) {
                 return acc = alert(`Name found.`);
             }
             acc += 1
             if (acc == array3.length -1) {
-                return acc = alert(`${name1} is not a current teacher.`);
+                return acc = alert(`${myName} is not a current teacher.`);
             }
 
         }, )
         // Of the two methods, I like the reduce method better because you can play with the acumulador 
           
+    }
+    const Exercise10 = () => {
+        var array5 = ["*", "*", "*", "*", "*", "*", "*"];
+        const array6 = [1, 2, 3, 4, 5, 6, 7]
+        var count = 0;
+        for (let g of array6) {
+            array5.splice(count, 1, g);
+            console.log(array5.toString());
+            
+            count++;
+        }
+
+        
+       
+          
+    }
+    const Exercise11 = () => {
+        let finish = true;
+        while(finish) {
+        
+            let op = prompt("Enter a number - or negative number to exit").trim().toLowerCase();
+            switch(op) {
+                case (!isNaN(parseInt(op))):
+                    var sum = 0
+                        sum += op 
+
+                    break;
+                
+                case (parseInt(op) <= 0):
+                    alert(`End of the exercises, the total sum is ${sum}.`);
+                    
+                    finish = false;
+                    break;
+                default:
+                    alert("Invalid option!!");
+                    alert(`Enter a number - or negative number to exit.`);
+            }
+        }  
+          
     } 
     
-    alert(`He chooses the exercise to perform 7, 8 or 9 and to finish he enters 0.`);
+    alert(`He chooses the exercise to perform 7, 8, 9, 10 or 11 and to finish he enters 0.`);
     let finish = true;
     while(finish) {
        
-        let op = parseInt(prompt("Enter a number:", "7, 8, 9 or 0").trim());
+        let op = parseInt(prompt("Enter a number - 7, 8, 9, 10, 11 or 0 to exit").trim());
         switch(op) {
             case 7:
                 Exercise7();
@@ -69,6 +107,12 @@ window.onload = function () {
                 break;
             case 9:
                 Exercise9();
+                break;
+            case 10:
+                Exercise10();
+                break;
+            case 11:
+                Exercise11();
                 break;
             case 0:
                 alert("End of the exercises.");
