@@ -91,36 +91,77 @@ window.onload = function () {
             }
         }  
           
+    }
+    const Exercise12 = () => {
+        let confirm1 = confirm(`Would you like to receive notifications of our news?.`);
+        setTimeout(() => {
+            if (confirm1 === true) {
+                alert("You will now receive our news.");
+
+            }else{
+                alert("Agreed you will not receive our news.");
+            }
+        }, "2000");
+
+    }
+  
+    const Exercise13 = () => {
+        let op = prompt("Enter a phrase of up to 10 words.", "El perro de San Roque no tiene rabo, porque Ramón Rodríguez se lo ha robado").trim().toLowerCase();
+        //The maximum of ten words is to show the information so it is not too much.
+        let word = op.split(" ");
+        // word.length()
+        // word[word.length(-1)]
+        // word.reverse()
+        // word.sort()
+        // word.sort().reverse()
+        let output = "";
+        output += `<p>Number of words: ${word.length}</p>`;
+        output += `<p>Last word: ${word[word.length - 1]}</p>`;
+        output += `<p>Words reversed: ${word.slice().reverse().join(" ")}</p>`;
+        output += `<p>Words sorted: ${word.slice().sort().join(" ")}</p>`;
+        output += `<p>Words sorted reverse: ${word.slice().sort().reverse().join(" ")}</p>`;
+
+        // Un solo document.write que reemplaza todo el contenido de la página
+        document.write(output);
+
     } 
-    
-    alert(`He chooses the exercise to perform 7, 8, 9, 10 or 11 and to finish he enters 0.`);
-    let finish = true;
-    while(finish) {
-       
-        let op = parseInt(prompt("Enter a number - 7, 8, 9, 10, 11 or 0 to exit").trim());
-        switch(op) {
-            case 7:
-                Exercise7();
-                break;
-            case 8:
-                Exercise8();
-                break;
-            case 9:
-                Exercise9();
-                break;
-            case 10:
-                Exercise10();
-                break;
-            case 11:
-                Exercise11();
-                break;
-            case 0:
-                alert("End of the exercises.");
-                finish = false;
-                break;
-            default:
-                alert("Invalid option!!");
-                alert(`He chooses the exercise to perform 7, 8 or 9 and to finish he enters 0.`);
+    setTimeout(() => {
+        alert(`He chooses the exercise to perform 7, 8, 9, 10, 11, 12 or 13 and to finish he enters 0.`);
+        let finish = true;
+        while(finish) {
+        
+            let op = parseInt(prompt("Enter a number - 7, 8, 9, 10, 11, 12, 13 or 0 to exit").trim());
+            switch(op) {
+                case 7:
+                    Exercise7();
+                    break;
+                case 8:
+                    Exercise8();
+                    break;
+                case 9:
+                    Exercise9();
+                    break;
+                case 10:
+                    Exercise10();
+                    break;
+                case 11:
+                    Exercise11();
+                    break;
+                case 12:
+                    Exercise12();
+                    break;
+                case 13:
+                    Exercise13();
+                    break;
+                case 0:
+                    alert("End of the exercises.");
+                    finish = false;
+                    break;
+                default:
+                    alert("Invalid option!!");
+                    alert(`He chooses the exercise to perform 7, 8 or 9 and to finish he enters 0.`);
+            }
         }
-    }  
+    }, 3000);
+      
 }
