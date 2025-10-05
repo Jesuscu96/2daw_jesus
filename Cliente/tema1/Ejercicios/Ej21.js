@@ -10,14 +10,13 @@ window.onload = function () {
         
     }
     const array1 = [5, 8, 7, 4, 8, 10,];
-    const num1 = 8;
-    const num2 = 5;
+    
     document.write(`<p>The array is: ${array1}</p><br>`);
     
     document.write(`<p>The number is 8</p>`);
-    document.write(greaterThanAvarage(array1, num1));
+    document.write(greaterThanAvarage(array1, 8));
     
     document.write(`<p>The number is 5</p>`);
-    document.write(greaterThanAvarage(array1, num2));
+    document.write(greaterThanAvarage(array1, 5));
 
 }
