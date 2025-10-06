@@ -12,8 +12,12 @@ window.onload = function () {
         }
 
     }
-    let year = 2024;
-    document.write(`<p>The year is ${year}</p>`);
-    isLeapYear(year)
     
+    document.write(`<p>The year is 2024</p>`);
+    isLeapYear(2024)
+    
+    document.write(`<p>The year is 2025</p>`);
+    isLeapYear(2025)
+    document.write(`<p>The year is 2028</p>`);
+    isLeapYear(2028)
 }

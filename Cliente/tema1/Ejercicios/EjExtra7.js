@@ -19,6 +19,6 @@ window.onload = function () {
     
     
     
-    document.write(`<p style="color: red;">The number is: 2540586782 .</p>`);
+    document.write(`<p">The number is: 2540586782 .</p>`);
     document.write(isEvenPart2(2540586782));
 }   

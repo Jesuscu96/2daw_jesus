@@ -8,9 +8,8 @@ window.onload = function () {
             return document.write(`It is not palindrome ${x}. <br>`);
         }
     }
-    const word1 = "Jesus";
-    const word2 = "Ana";
-    isPalindrome(word1);
-    isPalindrome(word2);
+        
+    isPalindrome("Jesus");
+    isPalindrome("Ana");
     
 }

@@ -2,8 +2,8 @@ window.onload = function () {
     function isEven(x) {
         return x % 2 == 0
     }
-    let array1 = [5, 8, 7, 4]
-    document.write(`<p>${array1}</p>`);
-    document.write(array1.some(isEven))
+    let num1 = prompt ("Enter a number: ")
+    document.write(`<p>The number is: ${num1}</p>`);
+    document.write(even(isEven))
     
 }

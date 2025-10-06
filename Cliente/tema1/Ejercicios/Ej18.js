@@ -4,25 +4,25 @@ window.onload = function () {
             document.write(`It is not prime: ${num}. <br>`);
             return;
         }
-         if (num % 2 === 0) {
+        else if (num % 2 === 0) {
             document.write(`It is not prime: ${num}. <br>`);
             return;
         }
-        if (num === 2) {
-            document.write(`It is prime: ${num}. <br>`);
+        else if (num === 2) {
+            document.write(`It's prime: ${num}. <br>`);
             return;
         }
         for (let i = 3; i <= Math.sqrt(num); i += 2) {
-            if (num % i === 0) return document.write(`It is not prime ${num}. <br>`);
+            if (num % i === 0) {
+                document.write(`It's not prime ${num}. <br>`);
+                return
+            } 
         }
-        return document.write(`If it is prime: ${num}. <br>`);
+        document.write(`If it's prime: ${num}. <br>`);
          
 
     }
-    const num1 = 11;
-    const num2 = 12;
-   
-    isPrime(num1);
-    isPrime(num2);
+    isPrime(11);
+    isPrime(12);
     
 }
