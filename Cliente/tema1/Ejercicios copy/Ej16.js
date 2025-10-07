@@ -1,5 +1,5 @@
 window.onload = function () {
-    const isLeapYear = num1 => {
+    function isLeapYear(num1) {
         
         if(num1 % 400 === 0 ){
             return document.write("It's a leap year.")

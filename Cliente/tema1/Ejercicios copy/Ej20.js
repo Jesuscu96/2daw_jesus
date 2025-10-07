@@ -1,5 +1,5 @@
 window.onload = function () {
-    const avarage = x => {
+    function avarage(x) {
         const sum = x.reduce((acc, elem) => acc += elem, 0);
         const len = x.length;
         const avar = (sum / len);

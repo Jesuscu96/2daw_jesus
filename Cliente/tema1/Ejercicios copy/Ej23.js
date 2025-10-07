@@ -1,5 +1,5 @@
 window.onload = function () {
-    const quadraticSolver = (a, b, c) => {
+    function quadraticSolver(a, b, c) {
         const discriminant = b * b - 4 * a * c;
 
         if (discriminant < 0) {
