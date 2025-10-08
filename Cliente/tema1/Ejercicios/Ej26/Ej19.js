@@ -1,7 +1,6 @@
 window.onload = function () {
-    function linearSearch(x) {
-        return x  === 8;
-    }
+    const linearSearch = x =>  x  === 8;
+    
     let array1 = [5, 8, 7, 4]
     let array2 = [5, 9, 7, 4]
     document.write(`<p>The number is 8</p>`);

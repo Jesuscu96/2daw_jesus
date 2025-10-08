@@ -1,5 +1,5 @@
 window.onload = function () {
-    function isPrime(num) {
+    const isPrime = num =>  {
         if (num <= 1) {
             document.write(`It is not prime: ${num}. <br>`);
             return;

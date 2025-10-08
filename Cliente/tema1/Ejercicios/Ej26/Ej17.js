@@ -1,5 +1,5 @@
 window.onload = function () {
-    function isPalindrome(x) {
+    const isPalindrome = x => {
         const word = x.toLowerCase();
         const wordrev = word.split("").reverse().join("");
         if(word === wordrev) {

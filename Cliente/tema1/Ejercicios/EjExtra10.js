@@ -1,23 +1,22 @@
 window.onload = function () {
     
-    function camelCase = text => {
-        text = text.toLowerCase();
-        let parts = text.split(" ");
-        for (let i = 1; i < parts.length; i++) {
-            let letters = parts[i].split("");
-            letters[0] = letters[0].toUpperCase();
-            parts[i] = letters.join("");
-        }
-        
-        return parts.join("");
-    }
-    let names = ["pedro lopez", "eva gonzalez", "fran garcia"]
-    document.write("<p> Nombres y apellidos: pedro lopez, eva gonzalez, fran garcia. </p><br>")   
-    document.write(`${camelCase(`)}`);
-
   
+  const capsletters = (arr) => {
+    return arr.map((allname) => {
+      const words = allname.split(" "); 
 
-    
-    
-   
+      const mayus = words.map((word) => {
+        const firstLetter = word.charAt(0).toUpperCase(); 
+        const rest = word.slice(1); 
+        return firstLetter + rest; 
+      });
+      
+      return mayus.join(" "); 
+    });
+  };
+
+    const name = ["pedro lopez", "eva gonzalez", "fran garcia"]
+    document.write("<p> Nombres y apellidos: pedro lopez, eva gonzalez, fran garcia. </p><br>")   
+    document.write(`${capsletters(name).join(", ")}`);
+
 }   
