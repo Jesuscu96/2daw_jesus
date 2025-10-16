@@ -1,0 +1,17 @@
+
+33.- Crea un array de objetos para almacenar una colección de vinilos. Cada disco debe incluir:
+
+    - id: número
+
+    - título del álbum: cadena de texto
+
+    - artista: cadena de texto
+
+    - lista de canciones: array
+
+Agrega al menos cuatro discos (con datos codificados en el código). Luego solicita por prompt un id; si existe, muestra toda la información de forma agradable usando document.write.
+
+EXTRA: Modifica el código para ordenar la colección según un criterio elegido (id, título del álbum o artista). Solicita el criterio vía prompt. Intenta implementar una única función de ordenación que acceda a las propiedades de los objetos según el criterio indicado.
+numbers.sort((a, b) => a - b);
+arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+vinyls.sort((a, b) => a.albumTitle.localeCompare(b.albumTitle));
