@@ -1,35 +1,37 @@
 window.onload = function () {
   const Exercise32 = () => {
-    let personas = {};
-    let contador = 1;
+    let people = [];
+    let counter = 1;
+    let add = true;
+    while (add === true) {
+      const name = prompt("Enter the user's name:").trim();
+      const lastName = prompt("Enter the user's last name:").trim();
+      const age = parseInt(this.prompt("Enter the user's age:")).trim();
 
-    while (confirm("¿Deseas agregar otro usuario?")) {
-      const nombre = prompt("Introduce el nombre del usuario:");
-      const apellido = prompt("Introduce el apellido del usuario:");
-      const edad = prompt("Introduce la edad del usuario:");
-
-
-      if (!isNaN(edad) && edad !== "") {
-
-        const clavePersona = `persona${contador}`;
-
-        personas[clavePersona] = {
-          nombre: nombre,
-          apellido: apellido,
-          edad: Number(edad)
+      if (age !== "" && !isNaN(age) && age > 0) {
+        const person = {
+          name: name,
+          lastName: lastName,
+          age: age
         };
-
-        contador++; 
+        people.push(person);
       } else {
-        alert("Edad inválida. No se agregó esta persona.");
+        alert("Invalid age. This person was not added.");
       }
+      add = confirm("Do you want to add another user?");
     }
 
+    console.log("People added:");
+    console.log(people);
+    
+    if (people.length > 0) {
+      const allUnder21 = people.every(p => p.age < 21);
+      console.log(`All users under 21? ${allUnder21}`);
+    }
 
-    console.log("Personas agregadas:");
-    console.log(personas);
-
+    const evenAgeUsers = people.filter(p => p.age % 2 === 0);
+    console.log('Users with even age:', evenAgeUsers);
+   
   }
   Exercise32();
-}  
- 
+}
