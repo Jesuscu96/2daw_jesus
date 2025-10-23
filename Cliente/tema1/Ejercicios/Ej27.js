@@ -8,7 +8,6 @@ window.onload = function () {
         newArray.push(op)
       }
       else if(op.toLocaleLowerCase() ==="stop"){
-        //newArray.sort()
         let setArray = new Set(newArray.sort())
         for(const i of setArray) {
           document.write(`<p>${i} </p>`)

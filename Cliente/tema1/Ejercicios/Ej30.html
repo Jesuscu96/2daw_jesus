@@ -31,6 +31,9 @@
         console.time("Array");
         result = arr.indexOf("Lola") !== -1;
         console.timeEnd("Array");
+        console.time("Array-find");
+        result = arr.find(x => x === "Lola");
+        console.timeEnd("Array-find");
 
         console.time("Set");
         result = set.has("Lola");
@@ -44,11 +47,11 @@
         }
         
         console.time("Array2");
-        result = newArr.indexOf([1, 1_000_000, 2_000_000]) !== -1;
+        result = newArr.indexOf(2000000) !== -1;
         console.timeEnd("Array2");
 
         console.time("Set2");
-        result = newSet.has([1, 1_000_000, 2_000_000]);
+        result = newSet.has(2000000);
         console.timeEnd("Set2");
       };
     </script>
