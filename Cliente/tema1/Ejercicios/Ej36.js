@@ -5,7 +5,7 @@ window.onload = function () {
     let allParagraph = document.getElementsByTagName("p");
     let firstParagraph = allParagraph[0];
     console.log(firstParagraph);
-  
+    
     
     
     let img = document.querySelector("img")

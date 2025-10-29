@@ -6,10 +6,10 @@ window.onload = function () {
     let rows = table.getElementsByTagName('tr');
     let numCols = rows[0].getElementsByTagName('td').length;
     for (let row of rows) {
-    let newCell = document.createElement('td');
-    newCell.textContent = 'New cell';
-    row.appendChild(newCell);
-  }
+      let newCell = document.createElement('td');
+      newCell.textContent = 'New cell';
+      row.appendChild(newCell);
+    }
     let newRow = document.createElement('tr');
     for (let i = 0; i <= numCols; i++) { 
       let newCell = document.createElement('td');
