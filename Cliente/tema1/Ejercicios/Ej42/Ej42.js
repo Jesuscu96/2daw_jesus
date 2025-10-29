@@ -1,21 +1,21 @@
 window.onload = function () {
-    const Exercise40 = () => {
-        let count = 0;
+    const Exercise42 = () => {
         let names = [];
-        for (let i = 0; i < 3; i++){
+        let nameTag = document.querySelectorAll(".name-tag");
+        for (let i = 0; i < nameTag.length; i++){
             let nameCelebrity = prompt("Enter the name of a celebrity.");
             names.push(nameCelebrity);
         }
         let inputGreeting = prompt("Enter a greeting.");
 
-        let nameTag = document.querySelectorAll(".name-tag")
-        console.log(nameTag)
+        
+        console.log(nameTag.length);
         let countName = 0; 
         for (let i of nameTag) {
-            let myH1 = i.getElementsByTagName("h1")
-            let myP = i.getElementsByTagName("p")
-            myH1.textContent = names[countName];
-            myP.textContent = inputGreeting;
+            let myH1 = i.getElementsByTagName("h1")[0]
+            let myP = i.getElementsByTagName("p")[0]
+            myH1.textContent = inputGreeting;
+            myP.textContent = names[countName];
             countName++
         }
 
@@ -74,5 +74,5 @@ window.onload = function () {
         lastLink.remove() */
         
     }
-    Exercise40();
+    Exercise42();
 }
