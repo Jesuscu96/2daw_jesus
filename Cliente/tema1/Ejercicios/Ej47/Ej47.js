@@ -4,21 +4,36 @@ document.addEventListener('DOMContentLoaded', () => {
         let myH1 = document.getElementsByTagName("h1");
         let myP = document.getElementsByTagName("p");
         let myButton = document.getElementsByTagName("input");
-        console.log(myP[0]);
+        //console.log(myButton[0]);
         for (let i = 0; i < myDiv.length; i++){
             myButton[i].addEventListener("click", () => {
-                myH1[i].style.display = "none";
-                myP[i].style.display = "none";
+                if (myButton[i].value === "HIDE" ) {
+                    
+                    myH1[i].style.display = "none";
+                    myP[i].style.display = "none";
+                    myButton[i].value = "SHOW";
+                    
+                } else {
+                    myH1[i].style.display = "block";
+                    myP[i].style.display = "block";
+                    myButton[i].value = "HIDE"
+                
+                }
+                
+            });
+            myDiv[i].addEventListener("mouseover", () => {
+                myDiv[i].style.backgroundColor = "lightblue";
             })
-            myP.addEventListener("mouseout", () => {
-                myP.style.backgroundColor = "green";
+            myDiv[i].addEventListener("mouseout", () => {
+                myDiv[i].style.backgroundColor = "lightgray";
             })
-            myP.addEventListener("click", () => {
-                myP.style.backgroundColor = "red";
-            })
-            myP.addEventListener("dblclick", () => {
-                myP.style.backgroundColor = "blue";
-            })
+        
+            
+            // myP.addEventListener("dblclick", () => {
+            //     myP.style.backgroundColor = "blue";
+            // })
+            
+            
         }
 
         
