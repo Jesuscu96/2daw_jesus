@@ -1,28 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const Exercise51 = () => {
+    const Exercise52 = () => {
         
-        
-        
-        let imagenPrincipal = document.getElementById("imagenPrincipal");
-        let miniaturas = document.querySelectorAll(".miniaturas img");
-        //console.log(miniaturas.length);
-        
-        for (let i = 0; i < miniaturas.length; i++) {
-            miniaturas[i].addEventListener("mouseover", () => {
-                miniaturas[i].style.width = "120px";
-                miniaturas[i].style.height = "80px";
-            });
-            miniaturas[i].addEventListener("mouseout", () => {
-                miniaturas[i].style.width = "100px";
-                miniaturas[i].style.height = "60px";
-            });
-            miniaturas[i].addEventListener("dblclick", () => {
-                imagenPrincipal.src = miniaturas[i].src;
-            });
+        document.getElementById("abrir").addEventListener("click", function() {
+            if (ventana && !ventana.closed) {
+                ventana.close();
+            }
 
-        } 
+            ventana = window.open(
+                "",
+                "miVentana",
+                "width=100,height=100,toolbar=no,menubar=no,location=no"
+            );
+
+            if (ventana) {
+                ventana.document.write("<body style='background:red;margin:0;'></body>");
+                ventana.document.close();
+            }
+        });
+
+        document.getElementById("cambiar").addEventListener("click", function() {
+            if (ventana && !ventana.closed) {
+                ventana.resizeTo(250, 250);
+                ventana.focus();
+            }
+        });
        
         
     }
-    Exercise51();
+    Exercise52();
 })
