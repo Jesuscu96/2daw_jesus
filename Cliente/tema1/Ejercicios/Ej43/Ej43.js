@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const jugadoresBulls = [
             {
                 id: 10,
-                imagen: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629632.png",
+                imagen: "./img/bull1.webp",
                 nombre: "Coby White",
                 posicion: "Base (PG)",
                 edad: 24,
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 id:12,
-                imagen: "https://cdn.nba.com/headshots/nba/latest/1040x760/1641703.png",
+                imagen: "./img/bull2.webp",
                 nombre: "Emanuel Miller",
                 posicion: "Alero (SF)",
                 edad: 24,
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 id: 31,
-                imagen: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630581.png",
+                imagen: "./img/bull3.webp",
                 nombre: "Josh Giddey",
                 posicion: "Escolta (SG)",
                 edad: 22,
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 id: 45,
-                imagen: "https://cdn.nba.com/headshots/nba/latest/1040x760/1628976.png",
+                imagen: "./img/bull4.webp",
                 nombre: "Jevon Carter",
                 posicion: "Base (PG)",
                 edad: 29,
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 id: 50,
-                imagen: "https://cdn.nba.com/headshots/nba/latest/1040x760/1631096.png",
+                imagen: "./img/bull5.webp",
                 nombre: "Dalen Terry",
                 posicion: "Escolta/Alero (SG/SF)",
                 edad: 22,
@@ -45,49 +45,54 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         //console.log(jugadoresBulls);
-        let miBody = document.createElement("body")
+        let miBody = document.body;
+        for (let i = 0; i < jugadoresBulls.length; i++) {
+            let divPlayerCard = document.createElement("div");
+            divPlayerCard.classList.add("player-card");
+            miBody.appendChild(divPlayerCard);
+
+            let imgPlayer = document.createElement("img");
+            imgPlayer.classList.add("player-img");
+            imgPlayer.src = jugadoresBulls[i].imagen;
+            divPlayerCard.appendChild(imgPlayer);
+            
+            let divPlayerInfo = document.createElement("div");
+            divPlayerInfo.classList.add("player-info");
+            divPlayerCard.appendChild(divPlayerInfo);
+            
+            let h2Name = document.createElement("h2");
+            h2Name.classList.add("player-name");
+            h2Name.textContent = jugadoresBulls[i].nombre;
+            divPlayerInfo.appendChild(h2Name);
+            
+            //position
+            let pPosittion = document.createElement("p");
+            let strongPosittion = document.createElement("strong");
+            strongPosittion.textContent = "Position ";
+            pPosittion.appendChild(strongPosittion);
+            pPosittion.textContent += jugadoresBulls[i].posicion;
+            divPlayerInfo.appendChild(pPosittion);
+
+            //age
+            let pAge = document.createElement("p");
+            let strongAge = document.createElement("strong");
+            strongAge.textContent = "Age ";
+            pAge.appendChild(strongAge);
+            pAge.textContent += jugadoresBulls[i].edad;
+            divPlayerInfo.appendChild(pAge);
+
+            //points
+            let pPoint = document.createElement("p");
+            let strongPoint = document.createElement("strong");
+            strongPoint.textContent = "Points ";
+            pPoint.appendChild(strongPoint);
+            pPoint.textContent += jugadoresBulls[i].puntosPorPartido;
+            divPlayerInfo.appendChild(pPoint);
+        
+        }
 
         //todo esto dentro de un bucle
-        let divPlayerCard = document.createElement("div");
-        divPlayerCard.class = "player-card";
-        miBody.appendChild(divPlayerCard)
-
-        let imgPlayer = document.createElement("img");
-        imgPlayer.src = "el link de la imagen";
-        divPlayerCard.appendChild(imgPlayer)
-        
-        let divPlayerInfo = document.createElement("div");
-        divPlayerInfo.class = "player-info";
-        divPlayerCard.appendChild(divPlayerInfo)
-        
-        let h2Name = document.createElement("h2");
-        h2.class = "player-name";
-        h2.textContent = "namepleyer"
-        divPlayerInfo.appendChild(h2)
-        
-        //position
-        let pPosittion = document.createElement("p");
-        let strongPosittion = document.createElement("strong");
-        strongPosittion.textContent = "variable ";
-        pPosittion.appendChild(strongPosittion);
-        pPosittion.textContent += "variable";
-        divPlayerInfo.appendChild(pPosittion)
-
-        //age
-        let pAge = document.createElement("p");
-        let strongAge = document.createElement("strong");
-        strongAge.textContent = "variable ";
-        pAge.appendChild(strongAge);
-        pAge.textContent += "variable";
-        divPlayerInfo.appendChild(pAge);
-
-        //points
-        let pPoint = document.createElement("p");
-        let strongPoint = document.createElement("strong");
-        strongPoint.textContent = "variable ";
-        pPoint.appendChild(strongPoint);
-        pPoint.textContent += "variable";
-        divPlayerInfo.appendChild(pPoint)        
+            
         
 
          
