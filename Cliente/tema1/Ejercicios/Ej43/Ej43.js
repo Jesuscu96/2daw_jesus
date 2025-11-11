@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //age
             let pAge = document.createElement("p");
             let strongAge = document.createElement("strong");
-            strongAge.textContent = "Age ";
+            strongAge.textContent = "Age  ";
             pAge.appendChild(strongAge);
             pAge.textContent += jugadoresBulls[i].edad;
             divPlayerInfo.appendChild(pAge);
