@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const Exercise57 = () => {
+    const Exercise58 = () => {
         
 
         
@@ -63,5 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
          
         
     }
-    Exercise57();
+    Exercise58();
 })
