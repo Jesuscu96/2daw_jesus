@@ -46,16 +46,34 @@
 
 </head>
 <body>
-    <form action="">
+    <div id="header"><h1>TEAM MANAGEMENT</h1></div>
+    <button id="showForm" style="margin: 5px 0px;">Show Form</button>
+    <div id="newPlayerForm">
+        <form action="#" method="post">
+            <label for="pid">Jersey number:</label> 
+            <input type="number" name="pid" value="" placeholder="#"></br> 
+            <label >Name: </label> 
+            <input type="text" name="name" value="" placeholder="Name"></br>
+            <label for="psurname" >Surname: </label> 
+            <input type="text" name="psurname" value="" placeholder="Surname"></br>
+            <label for="position">Position: </label> 
+            <select name="position">
+                <option value="Choose">Choose Position</option>
+                <option value="Center">Center</option>
+                <option value="Center/Forward">Center/Forward</option>
+                <option value="Point Guard">Point Guard</option>
+                <option value="Power Forward">Power Forward</option>
+                <option value="Shooting Guard">Shooting Guard</option>
+                <option value="Small Forward">Small Forward</option>
+            </select></br>
+            <label for="dob" >Date of Birth: </label> 
+            <input type="date" name="dob" value="" ></br>
+            <label for="ppg">PPG:</label> 
+            <input type="number" name="ppg" step=".1" placeholder="PPG"></br>
+            <button id="submitForm" style="margin: 5px 0px;">Add Player</button>
         
-        <div class="credendiales" >
-            <label>Name *</label> 
-            <input type="text" name="name" value="" id="inputName" required></br> 
-
-            <label>Number posittion *</label>
-            <input type="number" name="number"  value="" id="inputNumber" required></br>
-            <input type="button" value="change" id="change" >
-        </div>
-    </form>
+        </form>
+    </div>
+    
 </body>
 </html>
