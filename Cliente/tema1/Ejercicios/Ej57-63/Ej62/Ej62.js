@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(name.value === "") {
             name.style.backgroundColor = "lightcoral";
-            name.placeholder = "The field cannot be empty.";
+            name.placehodler = "The field cannot be empty.";
             submit.addEventListener('click', e => {
                 e.defaultPrevented();        
             })

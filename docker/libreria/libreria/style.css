@@ -1,0 +1,95 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+td:last-child, th:last-child {
+    text-align: center;
+}
+td{
+    width: 100px;
+    text-align: center;
+}
+
+td a{
+    padding-top: 20px;
+}
+
+
+/* Estilos para los botones Editar y Borrar */
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 2px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100px;
+    height: 150px;
+}
+
+.edit-button {
+    background-color: lightblue;
+    color: black;
+    text-align: center;
+}
+
+
+.edit-button:hover {
+    color: red;
+}
+
+.delete-button {
+    background-color: lightblue;
+    color: black;
+    text-align: center;
+
+}
+
+
+.delete-button:hover {
+    color: red;
+}
+select{
+    width: 158px;
+}
+
+h1.tablas{
+display: flex;
+justify-content: center;
+}
+
+div#menu{
+display: flex;
+justify-content: center;
+
+}
+div#menu a{
+    margin-right: 10px;
+    text-decoration: none;
+    background-color: lightblue;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+div#menu a:hover{
+    color: bisque;
+}

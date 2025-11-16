@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pass.addEventListener('input', e => {
             let letter = pass.value
-            let low = /^.{0,7}$|^[A-Za-z]{8,}$|^[\d]{8,}$/;
-            let medium = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            let low = /^.{0,7}$|^[A-Za[\d]{8,}$/;
+            let medium = /^(?=.*[A-Za-z])(?=.*\d)[A--z]{8,}$|^Za-z\d]{8,}$/;
             let hight = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
            /*  if(!low.test(letter)) { 
                 strength("LOW");

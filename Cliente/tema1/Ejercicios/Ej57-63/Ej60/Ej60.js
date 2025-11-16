@@ -20,18 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
         text.addEventListener("keydown", e => {
             let letter = e.key.toLowerCase();
             if (letter === "d")  {
-                let letterd = "d";
+               
                 e.preventDefault();
                 error(letter);
             } 
             else if (letter === "a") {
-                let lettera = "a";
+               
                 e.preventDefault();
                 error(letter);
 
             } 
             else if (letter === "w") {
-                let letterw = "w";
+
                 e.preventDefault();
                 error(letter);
 
