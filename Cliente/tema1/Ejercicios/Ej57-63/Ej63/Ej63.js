@@ -112,7 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
             pPoint.appendChild(strongPoint);
             pPoint.textContent += jugadoresBulls[i].pointsPerGame;
             divPlayerInfo.appendChild(pPoint);
-
+            
+            let edBtn = document.createElement("button");
+            let rmBtn = document.createElement("button");
             rmBtn.classList.add("but");
             rmBtn.textContent = "Remove";
             divPlayerInfo.appendChild(rmBtn);
@@ -145,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
     edBtn.addEventListener("click", () => {
         let playerID = edBtn.parentElement.id;
         let player = players.find((player) => player.id == playerID);
-        document.getElementsByName("pname")[0].value = player.name;
-        player.name = "Jose Socuellamos"
+        document.querySelector("name=[pid]").value = player.name;
+        
 
 
         console.log(player);
@@ -182,22 +184,22 @@ document.addEventListener('DOMContentLoaded', () => {
         let submitBtn = document.querySelector("#submitForm");
         submitBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            let idInput = document.getElementsByName("pid")[0].value;
-            let nameInput = document.getElementsByName("pname")[0].value;
-            let surnameInput = document.getElementsByName("psurname")[0].value;
-            let posInput = document.getElementsByName("position")[0].value;
-            let ageInput = document.getElementsByName("age")[0].value;
-            let ppgInput = document.getElementsByName("ppg")[0].value;
+            let idInput = document.querySelector("name=[pid]").value;
+            let nameInput = document.querySelector("name=[pname]").value;
+            let surnameInput = document.querySelector("name=[psurname]").value;
+            let posInput = document.querySelector("name=[position]").value;
+            let ageInput = document.querySelector("name=[age]").value;
+            let ppgInput = document.querySelector("name=[ppg]").value;
 
             console.log(idInput);
 
             let newPlayer = {
-            id: idInput,
-            image: "default.jpg",
-            name: nameInput + " " + surnameInput,
-            position: posInput,
-            age: ageInput,
-            pointsPerGame: ppgInput,
+                id: idInput,
+                image: "default.jpg",
+                name: nameInput + " " + surnameInput,
+                position: posInput,
+                age: ageInput,
+                pointsPerGame: ppgInput,
             };
 
             players.push(newPlayer);
