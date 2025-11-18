@@ -1,0 +1,13 @@
+<input id="age" type="number" min="18" max="65" required>
+<button id="btnCheck">OK</button>
+<p id="val"></p>
+<script>
+function checkAge() {
+var ageValue = document.getElementById("age");
+if (!ageValue.checkValidity()) {
+document.getElementById("val").innerHTML = ageValue.validationMessage;
+}
+}
+var btn = document.getElementById("btnCheck");
+btn.onclick = checkAge;
+</script>

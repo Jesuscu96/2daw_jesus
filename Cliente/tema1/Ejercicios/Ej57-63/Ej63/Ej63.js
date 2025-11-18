@@ -46,8 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // const newFrom = () => {
         //     0
         // }   
-    const cleanBody = () => {
+    const cleanContainer = () => {
         container.textContent = "";
+        
     }
 
     const remove = (Bulls, id) => {
@@ -68,11 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let divPlayerCard = document.createElement("div");
             divPlayerCard.classList.add("player-card");
             //id
-            let pId = document.createElement("p");
+            /* let pId = document.createElement("p");
             pId.classList.add("pId");
             pId.textContent = jugadoresBulls[i].id;
-            pId.style.display = "none";
-            divPlayerCard.appendChild(pId);
+            divPlayerCard.appendChild(pId); */
             container.appendChild(divPlayerCard);
             //img
             let imgPlayer = document.createElement("img");
@@ -83,6 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
             let divPlayerInfo = document.createElement("div");
             divPlayerInfo.classList.add("player-info");
             divPlayerCard.appendChild(divPlayerInfo);
+            //id
+            let pId = document.createElement("p");
+            pId.classList.add("pId");
+            pId.textContent = jugadoresBulls[i].id;
+            divPlayerInfo.appendChild(pId);
             //name
             let h2Name = document.createElement("h2");
             h2Name.classList.add("player-name");
@@ -127,10 +132,20 @@ document.addEventListener('DOMContentLoaded', () => {
             rmBtn.addEventListener("click", () => {
                 let playerID = pId.textContent;
                 remove(players,playerID);
-                cleanBody();
+                cleanContainer();
                 createPlayers(players);
             });
-        
+            edBtn.addEventListener("chance", () => {
+                //let id = edBtn.parentElement(".pId");
+                let playerID = pId.textContent;
+                let player = players.find((player) => player.id == playerID);
+                document.querySelector("input[name=pname]").value = player.name;
+                document.querySelector("input[name=ppg]").value = player.pointsPerGame;
+                
+
+                cleanContainer();
+                createPlayers(players);
+            });
         }
     }
     createPlayers(players);
@@ -140,33 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-  
-
-    edBtn.addEventListener("click", () => {
-        let playerID = edBtn.parentElement.id;
-        let player = players.find((player) => player.id == playerID);
-        document.querySelector("name=[pid]").value = player.name;
-        
-
-
-        console.log(player);
-        
-        cleanContainer();
-        drawAllPlayers(players);
-    });
-  
-
-
-  // let myPlayerName = prompt(
-  //   "Enter the jersey number of the player you want to rename: "
-  // );
-  // let newName = prompt("Enter the new name of the player: ");
-  // let playerIndex = players.findIndex((player) => player.name == myPlayerName);
-  // players[playerIndex].name = newName;
-  // cleanContainer();
-  // drawAllPlayers(players);
 
     let addPlayerBtn = document.querySelector("#showForm");
 
@@ -184,12 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let submitBtn = document.querySelector("#submitForm");
         submitBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            let idInput = document.querySelector("name=[pid]").value;
-            let nameInput = document.querySelector("name=[pname]").value;
-            let surnameInput = document.querySelector("name=[psurname]").value;
-            let posInput = document.querySelector("name=[position]").value;
-            let ageInput = document.querySelector("name=[age]").value;
-            let ppgInput = document.querySelector("name=[ppg]").value;
+            let idInput = document.querySelector("input[name=pid]").value;
+            let nameInput = document.querySelector("input[name=pname]").value;
+            let surnameInput = document.querySelector("input[name=psurname]").value;
+            let posInput = document.querySelector("select[name=position]").value;
+            let ageInput = document.querySelector("input[name=dob]").value;
+            let ppgInput = document.querySelector("input[name=ppg]").value;
 
             console.log(idInput);
 
@@ -207,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formDiv.style.display = "none";
             addPlayerBtn.innerText = "Show Form";
             cleanContainer();
-            drawAllPlayers(players);
+            createPlayers(players);
         });
     });
 });
