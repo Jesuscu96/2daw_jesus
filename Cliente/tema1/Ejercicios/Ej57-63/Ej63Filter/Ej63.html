@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej66</title>
+    <script src = "./Ej63.js"></script>
+    <style>
+        .player-card {
+            width: 280px;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-family: 'Arial', sans-serif;
+            display: grid;
+            grid-template-rows: 1fr, 1fr, 1fr;
+        }
+
+        .player-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        .player-img {
+            width: 100½;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .player-info {
+            padding: 15px;
+        }
+
+        .player-name {
+            margin: 0 0 10px 0;
+            color: #ce1141; /* color clásico de los Bulls */
+        }
+
+        .player-info p {
+            margin: 5px 0;
+            font-size: 15px;
+        }
+        #newPlayerForm {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="header"><h1>TEAM MANAGEMENT</h1></div>
+    <button id="showForm" style="margin: 5px 0px;">Show Form</button>
+    <div id="newPlayerForm">
+        <form action="#" method="post">
+            <label for="pid">Jersey number:</label> 
+            <input type="number" name="pid" value="" placeholder="#"></br> 
+            <label >Name: </label> 
+            <input type="text" name="pname" value="" placeholder="Name"></br>
+            <label for="psurname" >Surname: </label> 
+            <input type="text" name="psurname" value="" placeholder="Surname"></br>
+            <label for="position">Position: </label> 
+            <select name="position">
+                <option value="Choose">Choose Position</option>
+                <option value="Center">Center</option>
+                <option value="Center/Forward">Center/Forward</option>
+                <option value="Point Guard">Point Guard</option>
+                <option value="Power Forward">Power Forward</option>
+                <option value="Shooting Guard">Shooting Guard</option>
+                <option value="Small Forward">Small Forward</option>
+            </select></br>
+            <label for="dob" >Date of Birth: </label> 
+            <input type="date" name="dob" value="" ></br>
+            <label for="ppg">PPG:</label> 
+            <input type="number" name="ppg" step=".1" placeholder="PPG"></br>
+            <button id="submitForm" style="margin: 5px 0px;">Add Player</button>
+        
+        </form>
+    </div>
+    
+</body>
+</html>
