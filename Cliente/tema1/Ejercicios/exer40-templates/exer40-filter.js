@@ -199,6 +199,7 @@ window.onload = function () {
     posDropdown.id = "f_positiom";
     let blankOpt = document.createElement("option");
     blankOpt.textContent = "Select position";
+    blankOpt.value = "blank"
     blankOpt.disabled = true;
     blankOpt.selected = true;
     posDropdown.appendChild(blankOpt);
@@ -219,91 +220,60 @@ window.onload = function () {
         
     }
     console.log(idCards); */
-    
-    
-    function filterPlayers () {
-        let allCards = document.querySelectorAll(".card");
-        let idCards = [];
-        for (let i = 0; allCards.length > i; i++) {
-            
-            idCards.push(Number(allCards[i].dataset.id));
-            
-        }
-        //console.log(idCards);
-        let newArrayPlayers = players.filter(player => idCards.includes(player.id));
-        //console.log(newArrayPlayers[2]);
-        return newArrayPlayers.length > 0 ? newArrayPlayers : players;
-        
-    }
-    filterPlayers();
-
-    //APLICAR FILTRO POR POSICION
-    posDropdown.addEventListener("change", (e) =>{
-        let filteredPlayers = filterPlayers().filter(player => player.position == posDropdown.value);
-        cleanContainer();
-        drawAllPlayers(filteredPlayers);
-    })
-    // FIN FILTRO POSICION
-
-    //FILTRO POR NAME
+    let pointsMin = document.querySelector("input[name=f_pointMin]");
+    let pointsMax = document.querySelector("input[name=f_pointMax]");
     let pName = document.querySelector("input[name=f_name]");
-    pName.oninput = () => {
-        let filteredPlayers = filterPlayers().filter(player => {
+
+    function applyAllFilters () {
+        let filteredPlayers = [...players];
+
+         //APLICAR FILTRO POR POSICION
+        if (posDropdown.value !== "blank") 
+            filteredPlayers = filteredPlayers.filter(player => player.position == posDropdown.value);
+            
+        
+        
+        // FIN FILTRO POSICION
+
+        //FILTRO POR NAME
+        filteredPlayers = filteredPlayers.filter(player => {
             let fullName = player.name + " " + player.surname;
             return fullName.toLocaleLowerCase().includes(pName.value.toLocaleLowerCase())
         });
-        cleanContainer();
-        drawAllPlayers(filteredPlayers);
-    }
-    // FIN FILTRO NAME
-    
-    //APLICAR FILTRO POR PUNTOS 
-    let pointsMin = document.querySelector("input[name=f_pointMin]");
-    let pointsMax = document.querySelector("input[name=f_pointMax]");
+        
+        
+        // FIN FILTRO NAME
 
-    pointsMax.onchange = (e) => {
-        let filteredPlayers = filterPlayers().filter(player => {
+        //APLICAR FILTRO POR PUNTOS 
+        let min = pointsMin.value ? Number(pointsMin.value) : 0;
+        let max = pointsMax.value ? Number(pointsMax.value) : Infinity;
+        
+        filteredPlayers = filteredPlayers.filter(player => {
             
-            return player.pointsPerGame >= pointsMin.value && player.pointsPerGame <= pointsMax.value;
+            return player.pointsPerGame >= min && player.pointsPerGame <= max;
         });
         cleanContainer();
         drawAllPlayers(filteredPlayers);
+       
+        // FIN FILTRO PUNTOS
     }
-    // FIN FILTRO PUNTOS
-
-    function applyFilters() {
-        const position = posDropdown.value; // o "" si está en blanco
-        const nameValue = pName.value.toLowerCase().trim();
-        const min = parseFloat(pointsMin.value) || 0;
-        const max = parseFloat(pointsMax.value) || Infinity;
-
-        let filtered = currentPlayers.filter(player => {
-            // filtro por posición
-            let okPos = (position === "Select position") || player.position === position;
-
-            // filtro por nombre
-            let fullName = (player.name + " " + player.surname).toLowerCase();
-            let okName = !nameValue || fullName.includes(nameValue);
-
-            // filtro por puntos
-            let okPoints = player.pointsPerGame >= min && player.pointsPerGame <= max;
-
-            return okPos && okName && okPoints;
-        });
-
-        cleanContainer();
-        drawAllPlayers(filtered);
-    }
-
+    
+    posDropdown.addEventListener("change", applyAllFilters);
+    pName.oninput = applyAllFilters;
+    pointsMin.onchange = applyAllFilters;
+    pointsMax.onchange = applyAllFilters;
+    
     //ELEMINAR FILTROS
     let removeFilter = document.getElementById("removeFilters");
     removeFilter.onclick =  () => {
         
-        cleanContainer();blankOpt.selected = true;
-        
+        cleanContainer();
+        pName.value = "";
+        pointsMax.value = "";
+        pointsMin.value = "";
+        posDropdown.value = "blank";
         blankOpt.selected = true;
+        
         drawAllPlayers(players);
-    }
-   
-    
+    }    
 }
