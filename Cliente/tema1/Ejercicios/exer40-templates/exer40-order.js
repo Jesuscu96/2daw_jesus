@@ -172,5 +172,54 @@ window.onload = function () {
     }
 
     drawAllPlayers(players);
+    let orderBySurnameBtn = document.getElementById("b_surname");
+    console.log(orderBySurnameBtn);
+    
+    orderBySurnameBtn.addEventListener("click", (e) => {
+        let orderedPlayers = [...players];
+        let count = 0;
+        if (count === 0) {
+            orderedPlayers.sort((a, b) => {
+                if (a.surname < b.surname) {
+                    return -1;
+                } else if(a.surname > b.surname) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            count ++;
+            cleanContainer();
+            drawAllPlayers(orderedPlayers);
+        } else if (count === 1) {
+            orderedPlayers.sort((a, b) => {
+                if (a.surname < b.surname) {
+                    return 1;
+                } else if(a.surname > b.surname) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
+            count ++;
+            cleanContainer();
+            drawAllPlayers(orderedPlayers);
+        } else if (count >= 3) {
+            count = 0;
+            cleanContainer();
+            drawAllPlayers(players);
+        }
+        // orderedPlayers.sort((a, b) => {
+        //     if (a.surname < b.surname) {
+        //         return -1;
+        //     } else if(a.surname > b.surname) {
+        //         return 1;
+        //     } else {
+        //         return 0;
+        //     }
+        // });
+        // cleanContainer();
+        // drawAllPlayers(orderedPlayers);
+    })
 
 }
