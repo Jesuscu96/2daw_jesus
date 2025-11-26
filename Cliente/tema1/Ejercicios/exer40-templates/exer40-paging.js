@@ -120,10 +120,11 @@ window.onload = function () {
         }
     ];
 
-    let body = document.querySelector("body");
+    let header = document.getElementById("header");
     let container = document.createElement("div");
     container.id = "container";
-    body.appendChild(container);
+    let section = document.querySelector("section");
+    header.insertBefore(container, section);
 
     // Clean container
     function cleanContainer() {
@@ -163,12 +164,60 @@ window.onload = function () {
 
         container.appendChild(card);
     }
-
+    //console.log(players.length);
+    
     // Paint players
-    function drawAllPlayers(players) {
-        for (let i = 0; i < players.length; i++) {
-            drawPlayer(players[i]);
+    
+    let perPage = 3; //Elements per page
+    let currentPlayers = 0; //  A partir de que jugador muestro los siguientes  
+    let currentPage = 1;    
+   
+    function drawAllPlayers(player) {
+        for ( let i = 0 ; i < player.length; i++) {
+            drawPlayer(player[i]);
         }
     }
 
+    const firstPage = players.slice(0, 3); // Muestro las primeras cards   
+    drawAllPlayers(firstPage);
+
+
+    let botonB = document.getElementById("back"); //botton back
+    let botonA = document.getElementById("next"); //botton next
+    let pageI = document.getElementById("page-info"); // span current page
+    pageI.textContent = currentPage;   
+    // Event next page
+    botonA.addEventListener("click", (e) => {
+        let card = document.querySelectorAll(".card");
+        if (card.length >= 3) { // evito que si la cantidad de cartas en menor a 3 no me devuelva un array vacio
+            currentPage += 1;
+            currentPlayers += 3;
+            perPage += 3;
+            const nextPage = players.slice(currentPlayers, perPage);
+            pageI.textContent = currentPage;
+            cleanContainer();
+            drawAllPlayers(nextPage);
+        }
+        
+        
+    });
+    // Event Back page
+    botonB.addEventListener("click", (e) => {
+        if (currentPlayers === 0) { // evito que reste a numero negativo
+            const backPage = players.slice(currentPlayers, perPage);
+            currentPage = 1;    
+            pageI.textContent = currentPage;
+            cleanContainer();
+            drawAllPlayers(backPage);
+        } else {
+            currentPlayers -= 3;
+            perPage -= 3;
+            const backPage = players.slice(currentPlayers, perPage);
+            currentPage -= 1;    
+            pageI.textContent = currentPage;
+            cleanContainer();
+            drawAllPlayers(backPage);
+        }
+    });
+    
 }
