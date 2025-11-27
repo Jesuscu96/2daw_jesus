@@ -179,10 +179,6 @@ window.onload = function () {
     orderBySurnameBtn.addEventListener("click", (e) => {
         let orderedPlayers = [...players];
         
-    
-        
-        
-        
         if (count === 0) {
             orderedPlayers.sort((a, b) => {
                 if (a.surname < b.surname) {
@@ -195,8 +191,7 @@ window.onload = function () {
             });
             orderBySurnameBtn.textContent = 'Surname ↓';
             count ++;           
-            cleanContainer();
-            drawAllPlayers(orderedPlayers);
+            
         } else if (count === 1) {
             orderedPlayers.sort((a, b) => {
                 if (a.surname < b.surname) {
@@ -209,15 +204,38 @@ window.onload = function () {
             });
             orderBySurnameBtn.textContent = 'Surname ↑';
             count ++;
-            cleanContainer();
-            drawAllPlayers(orderedPlayers);
+
         } else if (count >= 2) {
             orderBySurnameBtn.textContent = 'Surname';
             count = 0;
-            cleanContainer();
-            drawAllPlayers(players);
         }
+        cleanContainer();
+        drawAllPlayers(players);
         
     })
+    let orderPosAgeBtn = document.getElementById("b_pos-age");
+    orderPosAgeBtn.addEventListener("click", (e) => {
+        let orderedPlayers = [...players];
+        
+        orderedPlayers.sort((a, b) => {
+            if (a.position < b.position) {
+                return -1;
+            } else if(a.position > b.position) {
+                return 1;
+            } else if(a.dateOfBirth < b.dateOfBirth) {
+                return 1;
+            } else if(a.dateOfBirth > b.dateOfBirth) {
+                return -1;
+            }
+            else {
+                return 0;
+            }
+        });
+        
+        cleanContainer();
+        drawAllPlayers(orderedPlayers);
+        
+    })
+
 
 }
