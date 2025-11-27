@@ -178,45 +178,39 @@ window.onload = function () {
         }
     }
 
-    const firstPage = players.slice(0, 3); // Muestro las primeras cards   
-    drawAllPlayers(firstPage);
+       
+    drawAllPlayers(players.slice(0, 3)); // Muestro las primeras cards
 
 
     let botonB = document.getElementById("back"); //botton back
     let botonA = document.getElementById("next"); //botton next
     let pageI = document.getElementById("page-info"); // span current page
     pageI.textContent = currentPage;   
+    const paging = (player, current,page) => player.slice(current, page);
+    
     // Event next page
     botonA.addEventListener("click", (e) => {
         let card = document.querySelectorAll(".card");
         if (card.length >= 3) { // evito que si la cantidad de cartas en menor a 3 no me devuelva un array vacio
             currentPage += 1;
-            currentPlayers += 3;
-            perPage += 3;
-            const nextPage = players.slice(currentPlayers, perPage);
             pageI.textContent = currentPage;
             cleanContainer();
-            drawAllPlayers(nextPage);
-        }
-        
-        
+            drawAllPlayers(paging(players, currentPlayers += 3, perPage += 3));
+        }  
     });
+
     // Event Back page
     botonB.addEventListener("click", (e) => {
-        if (currentPlayers === 0) { // evito que reste a numero negativo
-            const backPage = players.slice(currentPlayers, perPage);
+        if (currentPlayers === 0) { // evito que reste a numero negativo 
             currentPage = 1;    
             pageI.textContent = currentPage;
             cleanContainer();
-            drawAllPlayers(backPage);
+            drawAllPlayers(paging(players, currentPlayers, perPage));
         } else {
-            currentPlayers -= 3;
-            perPage -= 3;
-            const backPage = players.slice(currentPlayers, perPage);
             currentPage -= 1;    
             pageI.textContent = currentPage;
             cleanContainer();
-            drawAllPlayers(backPage);
+            drawAllPlayers(paging(players, currentPlayers -= 3, perPage -= 3));
         }
     });
     
