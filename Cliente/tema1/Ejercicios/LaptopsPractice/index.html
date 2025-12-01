@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laptops Practice</title>
+    <link rel="stylesheet" href="laptops.css">
+    <script src="laptops.js"></script>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Menú lateral -->
+        <aside class="sidebar">
+            <h2>Filtros</h2>
+
+            <div class="filter-group">
+                <label for="max-price">Max price</label>
+                <input type="number" id="max-price" name="max-price" placeholder="Ej: 1000" />
+            </div>
+
+            <div class="filter-group">
+                <label for="processor-select">Processor</label>
+                <!-- Este select se rellenará dinámicamente con JS -->
+                <select id="processor-select" name="processor-select">
+                   
+                </select>
+            </div>
+
+            <div class="filter-actions">
+                <button id="filter-btn" type="button">Filter</button>
+                <button id="remove-filters-btn" type="button">Remove filters</button>
+            </div>
+
+            <div class="order-section">
+                <p>Order by:
+                    <button class="order-link" data-order="brand" id="orderBrand">brand</button> |
+                    <button class="order-link" data-order="RAM" id="orderRam">RAM</button>
+                </p>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <h1>Laptops</h1>
+
+            <!-- Contenedor de cards -->
+            <section class="cards-container" id="cards-container">
+             
+            </section>
+
+            <!-- Paginación -->
+            <div class="pagination">
+                <button type="button" class="page-btn" id="back">&lt;</button>
+                <span class="page-info">Page 1 of 3</span>
+                <button type="button" class="page-btn" id="next">&gt;</button>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
