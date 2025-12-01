@@ -171,21 +171,23 @@ window.onload = function () {
     let perPage = 3; //Elements per page
     let currentPlayers = 0; //  A partir de que jugador muestro los siguientes  
     let currentPage = 1;    
-   
+    
     function drawAllPlayers(player) {
         for ( let i = 0 ; i < player.length; i++) {
             drawPlayer(player[i]);
         }
     }
-
-       
+    //let getTotalPages = () => Math.ceil(players.length / perPage);
+    
     drawAllPlayers(players.slice(0, 3)); // Muestro las primeras cards
 
 
     let botonB = document.getElementById("back"); //botton back
     let botonA = document.getElementById("next"); //botton next
     let pageI = document.getElementById("page-info"); // span current page
-    pageI.textContent = currentPage;   
+    botonB.disabled = true;
+    pageI.textContent = currentPage;
+    
     const paging = (player, current,page) => player.slice(current, page);
     
     // Event next page
@@ -194,6 +196,7 @@ window.onload = function () {
         if (card.length >= 3) { // evito que si la cantidad de cartas en menor a 3 no me devuelva un array vacio
             currentPage += 1;
             pageI.textContent = currentPage;
+            botonB.disabled = false;
             cleanContainer();
             drawAllPlayers(paging(players, currentPlayers += 3, perPage += 3));
         }  
@@ -201,17 +204,12 @@ window.onload = function () {
 
     // Event Back page
     botonB.addEventListener("click", (e) => {
-        if (currentPlayers === 0) { // evito que reste a numero negativo 
-            currentPage = 1;    
-            pageI.textContent = currentPage;
-            cleanContainer();
-            drawAllPlayers(paging(players, currentPlayers, perPage));
-        } else {
-            currentPage -= 1;    
-            pageI.textContent = currentPage;
-            cleanContainer();
-            drawAllPlayers(paging(players, currentPlayers -= 3, perPage -= 3));
-        }
+        currentPage -= 1;    
+        pageI.textContent = currentPage;
+        cleanContainer();
+        drawAllPlayers(paging(players, currentPlayers -= 3, perPage -= 3));
+        if (currentPlayers === 0) botonB.disabled = true;
+
     });
     
 }
