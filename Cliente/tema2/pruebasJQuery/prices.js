@@ -1,4 +1,4 @@
-$ñ(function() {
+$(function() {
     console.log($("div"));
     
 })
