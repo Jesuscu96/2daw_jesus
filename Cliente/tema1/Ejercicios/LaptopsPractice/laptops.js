@@ -342,7 +342,7 @@ window.onload = function () {
         let maxPrice = document.querySelector("input[name=max-price]");
         let maxPriceValue = maxPrice.value ? Number(maxPrice.value) : 0;  
        
-        laptopsOrder = laptopsOrder.filter(laptop => laptop.price > maxPriceValue);
+        laptopsOrder = laptopsOrder.filter(laptop => laptop.price < maxPriceValue);
         let option = laptopsOrder.map(cpu => cpu.processor);
         
         if (option.includes(select.value)) {
