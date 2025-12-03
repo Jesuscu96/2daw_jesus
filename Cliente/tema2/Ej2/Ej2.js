@@ -3,8 +3,8 @@ $(function () {
     console.log($("*:gt(0)"));
     console.log($("p:last"));
     console.log($("p:not(p:eq(1))"));
-    console.log($("p:odd"));
+    console.log($("p:even"));
     console.log($(".a:first"));
-    console.log($(".b:even"));
+    console.log($(".b:odd"));
     
 })

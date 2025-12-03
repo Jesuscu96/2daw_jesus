@@ -256,7 +256,7 @@ window.onload = function () {
     let pageInfo = document.querySelector(".page-info");
     
     
-        
+    //select dinamic 
     function creationSelectOption (laptops) {
         let opDisabled = document.createElement("option");
         opDisabled.textContent = "Processors ...";
@@ -275,14 +275,41 @@ window.onload = function () {
         }
     }
     creationSelectOption(laptops)
+    let laptopsOrder = [...laptops];
+
     let orderBrand = false;
     let orderRam = false;
     let filter = false;
 
+    //paginacion
+    let perPage = 4;
+    let currentPage = 1;
+    let currentLaptop = 0;    
+    let pages = Math.ceil(laptopsOrder.length / 4);
+    const paging = (laptopsOrder, currentPage, perPage) => laptopsOrder.slice(currentPage, perPage);
+    pageInfo.textContent = `${currentPage} ... ${pages}`;
+    bBack.disabled = true;
+    drawAllLatops(paging(laptopsOrder, currentLaptop, perPage));
+
+    bNext.onclick = () => {
+        if(currentPage < pages) {
+            currentPage++;
+            cleanContainer();
+            if(filter || orderBrand || orderRam) {
+                drawAllLatops(paging(applyAllFilters(orderByBrand(laptopsOrder)), currentLaptop+=4, perPage+=4));
+                
+            }
+            else {
+                drawAllLatops(paging(laptopsOrder, currentLaptop+=4, perPage+=4));
+            }
+            
+            pageInfo.textContent = `${currentPage} ... ${pages}`;
+            bBack.disabled = false;
+        }
+    }    
 
     // Ordenar 
-    let laptopsOrder = [...laptops];
-
+    
     function orderByBrand(laptopsOrder) {
         let orderDescBrand = laptopsOrder.sort((a, b) => {
             if (a.brand < b.brand) {
@@ -340,7 +367,7 @@ window.onload = function () {
     function applyAllFilters(laptopsOrder) {
         
         let maxPrice = document.querySelector("input[name=max-price]");
-        let maxPriceValue = maxPrice.value ? Number(maxPrice.value) : 0;  
+        let maxPriceValue = maxPrice.value ? Number(maxPrice.value) : Infinity;  
        
         laptopsOrder = laptopsOrder.filter(laptop => laptop.price < maxPriceValue);
         let option = laptopsOrder.map(cpu => cpu.processor);
@@ -349,8 +376,8 @@ window.onload = function () {
             laptopsOrder = laptopsOrder.filter(laptop => laptop.processor == select.value);
         }
         console.log(laptopsOrder);
-
-        return laptopsOrder;
+        let filterLatops = laptopsOrder;
+        return paging(filterLatops, currentLaptop, perPage)
         
 
         
@@ -372,36 +399,11 @@ window.onload = function () {
             cleanContainer();
             drawAllLatops(applyAllFilters(laptopsOrder));
         }
-        pages = Math.ceil(applyAllFilters(orderByBrand(laptopsOrder)).length / 4);
-        pageInfo.textContent = `${currentPage} ... ${pages}`;
+        // pages = Math.ceil(applyAllFilters(orderByBrand(laptopsOrder)).length / 4);
+        // pageInfo.textContent = `${currentPage} ... ${pages}`;
     });
 
-    //paginacion
-    let perPage = 4;
-    let currentPage = 1;
-    let currentLaptop = 0;    
-    let pages = Math.ceil(laptopsOrder.length / 4);
-    const paging = (laptopsOrder, currentPage, perPage) => laptopsOrder.slice(currentPage, perPage);
-    pageInfo.textContent = `${currentPage} ... ${pages}`;
-    bBack.disabled = true;
-    drawAllLatops(paging(laptopsOrder, currentLaptop, perPage));
-
-    bNext.onclick = () => {
-        if(currentPage < pages) {
-            currentPage++;
-            cleanContainer();
-            if(filter) {
-                drawAllLatops(paging(applyAllFilters(orderByBrand(laptopsOrder)), currentLaptop+=4, perPage+=4));
-                
-            }
-            else {
-                drawAllLatops(paging(laptopsOrder, currentLaptop+=4, perPage+=4));
-            }
-            
-            pageInfo.textContent = `${currentPage} ... ${pages}`;
-            bBack.disabled = false;
-        }
-    }    
+    
     bBack.onclick = () => {
         currentPage--;
         if(currentPage <= 1) {
@@ -409,7 +411,7 @@ window.onload = function () {
         }
         
         cleanContainer();
-        if(filter) {
+        if(filter || orderBrand || orderRam) {
             drawAllLatops(paging(applyAllFilters(orderByBrand(laptopsOrder)), currentLaptop-=4, perPage-=4));
         }
         else {
