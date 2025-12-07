@@ -10,8 +10,4 @@ $(function () {
     console.log($("ul li:nth-child(2)"));
     console.log($("ul:has(li[class*='a'])"));
     console.log($("ul li:last-child"));
-
-   
-    
-    
 })
