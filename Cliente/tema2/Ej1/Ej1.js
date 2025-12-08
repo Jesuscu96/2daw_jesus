@@ -7,7 +7,4 @@ $(function () {
     console.log($("ul~p"));
     console.log($("ul>.b"));
     console.log($(".t1.t2"));
-
-
-    
 })
