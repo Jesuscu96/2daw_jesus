@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>The Avengers</title>
+  <style>
+    div {
+      height: 200px;
+      width: 200px;
+      border: solid red 3px;
+      background-color: lightblue;
+    }
+
+    .caja {
+      background-color: lightgreen;
+      border: solid blueviolet 3px;
+      height: 220px;
+      width: 220px;
+    }
+  </style>
+  <script type="text/javascript" src="../jquery-3.7.1.js"></script>
+  <script>
+    $(function () {
+      $('#box')
+        .on('mouseenter mouseleave', function () {
+          $(this).toggleClass('caja');
+        });
+      $('#box').click(function () {
+
+        
+        $('#box').off('mouseenter mouseleave');
+
+        
+        $(this).removeClass('caja');
+
+        
+        $(this).text('Click');
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="box">
+    Caja div
+  </div>
+</body>
+
+</html>

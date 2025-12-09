@@ -1,8 +1,4 @@
 $(function () {
-    
-    // $(".activa").css({
-    //     border: "2px solid red"
-    // });
     $("p").click(function () {
         if(!$(this).hasClass("activa")) {
             $(this).addClass('activa');
