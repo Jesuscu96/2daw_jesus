@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A2_2</title>
+  <script type="text/javascript" src="../jquery-3.7.1.js"></script>
+  <script>
+    $(function () {
+      $("#name").blur(function () {
+        if($(this).val() == "") {
+          $(this).focus();
+        }
+      });
+      $("#email").blur(function () {
+        if($(this).val() == "") {
+          $(this).prev().css({"background-color": "blue"});
+          $("<p class='alerta'>El campo email esta vacio</p>").insertAfter($(this));
+        } else {
+           $(this).prev().removeAttr("style")
+           $(".alerta").remove();
+        }
+      });
+      $("#boton").one("click", function () {
+          $(this).text("Button clicked!")
+        });
+    });
+    
+  </script>
+
+
+</head>
+<body>
+
+<form id="contact" action="#">
+  <label for="name">Name:</label>
+  <input id="name"  name="name">
+  <label for="email">Email:</label>
+  <input id="email" name="email" >
+  <label for="subject">Subject:</label>
+  <input id="subject" name="subject" >
+  <label for="message">Message:</label>
+  <textarea id="message" name="message"></textarea> 
+  <button id="boton">Boton</button>
+
+</form>
+
+</body>
+</html>

@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>A2_2</title>
-</style>
+  <script type="text/javascript" src="../jquery-3.7.1.js"></script>
+  <script>
+    $(function () {
+      if($('style').length != 0) {
+        let style = $('style').text(style + '.field {margin: 5px 0; border: solid 1px black}');
+      } else {
+        $('<style> .field {margin: 5px 0; border: solid 1px black}</style>').appendTo($('head'));
+      }
+      $('form > *').wrap("<div class='field'></div>")
+    });
+  </script>
 
 
 </head>
