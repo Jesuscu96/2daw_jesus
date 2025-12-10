@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ej15</title>
-    <style>
-       
-    </style>
+    <style></style>
     <script type="text/javascript" src="../jquery-3.7.1.js"></script>
     <script>
-        $(function () {
-            $("<option value='5'>5</option>").appendTo("select");
-            $("<option value='6'>6</option>").appendTo("select");
-            if($("select").val()) {
-                $('<select class="desp" name="despegable"><option value="7">7</option><option value="8">8</option><option value="9">9</option></select>').appendTo("form");
-            }
+      $(function () {
+        $("<option value='5'>5</option>").appendTo("select");
+        $("<option value='6'>6</option>").appendTo("select");
 
+        $("select[name='despegable']").on("change", function () {
+          $(".segundo").remove();
+
+        
+          const nuevoSelect = `<select class="segundo" name="segundo">
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>`;
+          $("form").append(nuevoSelect);
         });
+      });
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <form action="#">
-        <label for="desp">Desplegable</label>
-        <select class="desp" name="despegable">
-            <option >1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
+      <label for="desp">Desplegable</label>
+      <select class="desp" name="despegable">
+        <option>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
     </form>
-</body>
-
+  </body>
 </html>

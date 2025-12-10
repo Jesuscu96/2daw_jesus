@@ -6,9 +6,7 @@ $(function () {
     });
     $("li:first").insertAfter(capitanAmerica);
     $(".avengers").prepend(`<li>${$("title").text()}</li>`);
-    const thor = $("li").filter(function () {
-        return $(this).text().includes("Thor");
-    });
+    const thor = $("li:contains('Thor')");
     $("<li>Spider-man</li>").insertBefore(thor);
 
     
