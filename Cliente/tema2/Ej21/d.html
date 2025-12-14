@@ -40,6 +40,16 @@
             cursor: pointer;
         }
     </style>
+    <script src="../jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        $(".button").click(function () {
+          
+          $("img").animate({ height: "+=100px", width: "+=100px"}, "slow");
+          $("img").animate({ height: "-=100px", width: "-=100px" }, "slow");
+        });
+      });
+    </script>
 </head>
 
 <body>

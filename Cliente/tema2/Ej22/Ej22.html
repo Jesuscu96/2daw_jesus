@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej22</title>
+    <style>
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #c62828;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+    </style>
+    <script src="../jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $(".button").hover(function () {
+                for (let i = 0; i < 5; i++) {
+                    $(this)
+                        .animate({ left: "-=10px" }, 50)
+                        .animate({ left: "+=20px" }, 50)
+                        .animate({ left: "-=10px" }, 50);
+                }
+            });
+            $(".button").click(function () {
+                for (let i = 0; i < 3; i++) {
+                    $(this)
+                        .animate({ top: "-=30px" }, 150)
+                        .animate({ top: "+=30px" }, 150);
+                }
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <button class="button">boton</button>
+</body>
+
+</html>
