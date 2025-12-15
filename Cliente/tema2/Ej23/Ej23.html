@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery animations</title>
+    <style>
+        .wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .img-box {
+            background-color: beige;
+            width: 600px;
+            height: 600px;
+            overflow: hidden;
+            border: 1px solid #3a7408;
+        }
+
+        .img-box img {
+            width: 100%;
+            position: relative;
+        }
+
+        .button-group {
+            width: 300px;
+            text-align: center;
+            font-family: verdana;
+            background-color: gray;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            
+        }
+
+        div.button {
+            width: 200px;
+            margin: 17px auto;
+            height: 36px;
+            line-height: 36px;
+            color: #fff;
+            background: rgb(65, 168, 99);
+            cursor: pointer;
+        }
+    </style>
+    <script src="../jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $(".button-group").mouseenter(function () {
+                $(this).stop();
+                $(this).animate({ left: "0px" }, "slow");                        
+                
+            });
+            $(".button-group").mouseleave(function () {
+                $(this).stop();
+                $(this).animate({ left: "-280px" }, "slow");                       
+                
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        
+        <div class="button-group">
+            <div class="button">fade out + fade in</div>
+            <div class="button">show / hide</div>
+            <div class="button">slide up + slide down</div>
+            <div class="button">width animation</div>
+            
+        </div>
+    </div>
+
+</body>
+
+</html>
