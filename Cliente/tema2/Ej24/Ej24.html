@@ -31,7 +31,7 @@
             background-color: gray;
             position: absolute;
             top: 0px;
-            left: -280px;
+            right: -280px;
             
         }
 
@@ -50,12 +50,22 @@
         $(function () {
             $(".button-group").mouseenter(function () {
                 $(this).stop();
-                $(this).animate({ left: "0px" }, "slow");                        
+                $(this).animate({ right: "0px" }, "slow");                        
                 
             });
             $(".button-group").mouseleave(function () {
                 $(this).stop();
-                $(this).animate({ left: "-280px" }, "slow");                       
+                $(this).animate({ right: "-280px" }, "slow");                       
+                
+            });
+            $(".button").mouseenter(function () {
+                $(this).stop();
+                $(this).animate({ width: "400px" }, "slow");                        
+                
+            });
+            $(".button").mouseleave(function () {
+                $(this).stop();
+                $(this).animate({ width: "200px" }, "slow");                       
                 
             });
 
