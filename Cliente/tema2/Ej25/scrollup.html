@@ -44,30 +44,19 @@
     <script src="../jquery-3.7.1.js"></script>
     <script>
         $(function () {
-            $("button").
-            $(".button-group").mouseenter(function () {
-                $(this).stop();
-                $(this).animate({ right: "0px" }, "slow");                        
-                
-            });
-            $(".button-group").mouseleave(function () {
-                $(this).stop();
-                $(this).animate({ right: "-280px" }, "slow");                       
-                
-            });
-            $(".button").mouseenter(function () {
-                $(this).stop();
-                $(this).animate({ width: "400px" }, "slow");                        
-                
-            });
-            $(".button").mouseleave(function () {
-                $(this).stop();
-                $(this).animate({ width: "200px" }, "slow");                       
-                
-            });
-
-        });
-
+            
+            $(window).scroll(function(){
+                if($(this).scrollTop() > 200) {
+                    $(".scrollButton").fadeIn("slow");
+                }
+                else {
+                    $(".scrollButton").fadeOut("slow");
+                }
+            })
+            $(".scrollButton").click(function() {
+                $(this).animate({scrollTop: "0"}, "slow");
+            })
+        })
     </script>
 
 </head>

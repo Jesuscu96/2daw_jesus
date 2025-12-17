@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta author="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laptops Practice</title>
+    <link rel="stylesheet" href="libro.css" />
+    <script src="../jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        let books = [
+          {
+            id: 7,
+            cover: "chris_jones.jpg",
+            author: "Chris",
+            title: "Jones",
+            alreadyRead: true,
+          },
+          {
+            id: 16,
+            cover: "stefan_jovic.jpg",
+            author: "Stefan",
+            title: "Jovic",
+            alreadyRead: true,
+          },
+          {
+            id: 5,
+            cover: "sergio_de_larrea.jpg",
+            author: "Sergio",
+            title: "De Larrea",
+            alreadyRead: false,
+          },
+          {
+            id: 8,
+            cover: "jean_montero.jpg",
+            author: "Jean",
+            title: "Montero",
+            alreadyRead: false,
+          },
+          {
+            id: 0,
+            cover: "brancou_badio.jpg",
+            author: "Brancou",
+            title: "Badio",
+            alreadyRead: true,
+          },
+          {
+            id: 6,
+            cover: "xabier_lopez_arostegui.jpg",
+            author: "Xabier",
+            title: "López-Arostegui",
+            alreadyRead: false,
+          },
+          {
+            id: 37,
+            cover: "semi_ojeleye.jpg",
+            author: "Semi",
+            title: "Ojeleye",
+            alreadyRead: true,
+          },
+          {
+            id: 2,
+            cover: "josep_puerto.jpg",
+            author: "Josep",
+            title: "Puerto",
+            alreadyRead: true,
+          },
+          {
+            id: 77,
+            cover: "nate_sestina.jpg",
+            author: "Nate",
+            title: "Sestina",
+            alreadyRead: false,
+          },
+          {
+            id: 4,
+            cover: "jaime_pradilla.jpg",
+            author: "Jaime",
+            title: "Pradilla",
+            alreadyRead: true,
+          },
+          {
+            id: 3,
+            cover: "nathan_reuvers.jpg",
+            author: "Nathan",
+            title: "Reuvers",
+            alreadyRead: false,
+          },
+          {
+            id: 24,
+            cover: "matt_costello.jpg",
+            author: "Matt",
+            title: "Costello",
+            alreadyRead: false,
+          },
+          {
+            id: 22,
+            cover: "ethan_happ.jpg",
+            author: "Ethan",
+            title: "Happ",
+            alreadyRead: true,
+          },
+        ];
+      });
+      function createBooks(books) {
+        for (let i = 0; books.length > i; i++) {
+          $("section").append(
+            "<div class='cardsContainer'></div>"
+            "<img src='imgs/" + books[i].id + "'>",
+            "<h1>" + books[i].title + "</h1>",
+            "<p>" + books[i].author + "</p>",
+            "<button type='button' class='Rb'> Remove</button>"
+          );
+        }
+      }
+      createBooks(books)
+    </script>
+  </head>
+
+  <body>
+    <div class="page-container">
+      <!-- Menú lateral -->
+      <aside class="sidebar">
+        <h2>Filtros</h2>
+
+        <div class="filter-group">
+          <label for="max-price">Max price</label>
+          <input
+            type="number"
+            id="max-price"
+            author="max-price"
+            placeholder="Ej: 1000"
+          />
+        </div>
+
+        <div class="filter-group">
+          <label for="processor-select">Processor</label>
+          <!-- Este select se rellenará dinámicamente con JS -->
+          <select id="processor-select" author="processor-select"></select>
+        </div>
+
+        <div class="filter-actions">
+          <button id="filter-btn" type="button">Filter</button>
+          <button id="remove-filters-btn" type="button">Remove filters</button>
+        </div>
+
+        <div class="order-section">
+          <p>
+            Order by:
+            <button class="order-link" data-order="brand" id="orderBrand">
+              brand
+            </button>
+            |
+            <button class="order-link" data-order="RAM" id="orderRam">
+              RAM
+            </button>
+          </p>
+        </div>
+      </aside>
+
+      <!-- Contenido principal -->
+      <main class="main-content">
+        <h1>My Book List</h1>
+
+        <!-- Contenedor de cards -->
+        <section class="cards-container" id="cards-container"></section>
+
+        <!-- Paginación -->
+        <div class="pagination">
+          <button type="button" class="page-btn" id="back">&lt;</button>
+          <span class="page-info">Page 1 of 3</span>
+          <button type="button" class="page-btn" id="next">&gt;</button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
