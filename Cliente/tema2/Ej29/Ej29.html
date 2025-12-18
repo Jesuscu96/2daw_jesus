@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej29</title>
+    <style>
+        #carousel {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        #carousel img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        #prev {
+            left: 5px;
+        }
+
+        #next {
+            right: 5px;
+        }
+
+        #dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="../jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            const images = [
+                "img/img1.jpeg",
+                "img/img2.jpeg",
+                "img/img3.jpeg",
+                "img/img4.jpeg",
+                "img/img5.jpeg"
+            ];
+
+            let count = 0;
+
+            function changeImage(newcount) {
+                const effect = $("input[name='effect']:checked").val();
+                const img = $("#carousel-img");
+
+                count = (newcount + images.length) % images.length;
+
+                if (effect === "fade") {
+                    img.fadeOut(300, function () {
+                        img.attr("src", images[count]).fadeIn(300);
+                    });
+                }
+
+                else if (effect === "slide") {
+                    img.slideUp(300, function () {
+                        img.attr("src", images[count]).slideDown(300);
+                    });
+                }
+
+                else if (effect === "toggle") {
+                    img.hide(300, function () {
+                        img.attr("src", images[count]).show(300);
+                    });
+                }
+
+                else if (effect === "move") {
+                    img.animate({ left: "300px", opacity: 0 }, 300, function () {
+                        img.css({ left: "-300px" })
+                            .attr("src", images[count])
+                            .animate({ left: "0", opacity: 1 }, 300);
+                    });
+                }
+            }
+
+            
+            $("#carousel-img").on("click", function () {
+                changeImage(count + 1);
+            });
+
+            
+            $("#next").on("click", function () {
+                changeImage(count + 1);
+            });
+
+            
+            $("#prev").on("click", function () {
+                changeImage(count - 1);
+            });
+
+            
+            $("#dots button").on("click", function () {
+                const newcount = $(this).data("count");
+                changeImage(newcount);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="controls">
+        <label><input type="radio" name="effect" value="fade" checked> Fundido</label>
+        <label><input type="radio" name="effect" value="slide"> Deslizar</label>
+        <label><input type="radio" name="effect" value="toggle"> Ocultar</label>
+        <label><input type="radio" name="effect" value="move"> Desplazar</label>
+    </div>
+    <div id="carousel">
+        <button id="prev">&#9664;</button>
+        <img id="carousel-img" src="img/img1.jpeg">
+        <button id="next">&#9654;</button>
+    </div>
+
+
+    <div id="dots">
+        <button data-count="0">1</button>
+        <button data-count="1">2</button>
+        <button data-count="2">3</button>
+        <button data-count="3">4</button>
+        <button data-count="4">5</button>
+    </div>
+
+</body>
+
+</html>

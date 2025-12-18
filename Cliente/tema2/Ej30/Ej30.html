@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej30</title>
+    <style>
+        .grid {
+            width: 600px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 40px auto;
+        }
+
+        .item {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            /* 🔑 evita que salga */
+            position: relative;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.3);
+            /* 🔍 zoom inicial */
+            opacity: 0.5;
+        }
+    </style>
+    <script src="../jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+
+            $(".item").hover(
+                function () {
+                    $(this)
+                    .find("img")
+                    .stop()
+                    .animate(
+                        {
+                            opacity: 1,
+                            width: "100%",
+                            height: "100%"
+                        },
+                        300
+                    ).css("transform", "translate(-50%, -50%) scale(1)");
+                },
+                function () {
+                    $(this)
+                    .find("img")
+                    .stop()
+                    .animate(
+                        {
+                            opacity: 0.5,
+                            width: "130%",
+                            height: "130%"
+                        },
+                        300
+                    ).css("transform", "translate(-50%, -50%) scale(1.3)");
+                }
+            );
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="item"><img src="img/img1.jpg"></div>
+        <div class="item"><img src="img/img2.jpg"></div>
+        <div class="item"><img src="img/img3.jpg"></div>
+        <div class="item"><img src="img/img4.jpg"></div>
+        <div class="item"><img src="img/img5.jpg"></div>
+        <div class="item"><img src="img/img6.jpg"></div>
+    </div>
+</body>
+
+</html>
