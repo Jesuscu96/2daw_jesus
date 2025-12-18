@@ -1,177 +1,271 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta author="viewport" content="width=device-width, initial-scale=1" />
-    <title>Laptops Practice</title>
-    <link rel="stylesheet" href="libro.css" />
-    <script src="../jquery-3.7.1.js"></script>
-    <script>
-      $(function () {
-        let books = [
-          {
-            id: 7,
-            cover: "chris_jones.jpg",
-            author: "Chris",
-            title: "Jones",
-            alreadyRead: true,
-          },
-          {
-            id: 16,
-            cover: "stefan_jovic.jpg",
-            author: "Stefan",
-            title: "Jovic",
-            alreadyRead: true,
-          },
-          {
-            id: 5,
-            cover: "sergio_de_larrea.jpg",
-            author: "Sergio",
-            title: "De Larrea",
-            alreadyRead: false,
-          },
-          {
-            id: 8,
-            cover: "jean_montero.jpg",
-            author: "Jean",
-            title: "Montero",
-            alreadyRead: false,
-          },
-          {
-            id: 0,
-            cover: "brancou_badio.jpg",
-            author: "Brancou",
-            title: "Badio",
-            alreadyRead: true,
-          },
-          {
-            id: 6,
-            cover: "xabier_lopez_arostegui.jpg",
-            author: "Xabier",
-            title: "López-Arostegui",
-            alreadyRead: false,
-          },
-          {
-            id: 37,
-            cover: "semi_ojeleye.jpg",
-            author: "Semi",
-            title: "Ojeleye",
-            alreadyRead: true,
-          },
-          {
-            id: 2,
-            cover: "josep_puerto.jpg",
-            author: "Josep",
-            title: "Puerto",
-            alreadyRead: true,
-          },
-          {
-            id: 77,
-            cover: "nate_sestina.jpg",
-            author: "Nate",
-            title: "Sestina",
-            alreadyRead: false,
-          },
-          {
-            id: 4,
-            cover: "jaime_pradilla.jpg",
-            author: "Jaime",
-            title: "Pradilla",
-            alreadyRead: true,
-          },
-          {
-            id: 3,
-            cover: "nathan_reuvers.jpg",
-            author: "Nathan",
-            title: "Reuvers",
-            alreadyRead: false,
-          },
-          {
-            id: 24,
-            cover: "matt_costello.jpg",
-            author: "Matt",
-            title: "Costello",
-            alreadyRead: false,
-          },
-          {
-            id: 22,
-            cover: "ethan_happ.jpg",
-            author: "Ethan",
-            title: "Happ",
-            alreadyRead: true,
-          },
-        ];
-      });
+
+<head>
+  <meta charset="UTF-8" />
+  <meta author="viewport" content="width=device-width, initial-scale=1" />
+  <title>Books Practice</title>
+  <link rel="stylesheet" href="libro.css" />
+  <script src="../jquery-3.7.1.js"></script>
+  <script>
+    $(function () {
+      let books = [
+        {
+          id: 16,
+          cover: "chris_jones.jpg",
+          author: "Chris",
+          title: "Jones",
+          alreadyRead: true,
+        },
+        {
+          id: 7,
+          cover: "stefan_jovic.jpg",
+          author: "Chris",
+          title: "Jovic",
+          alreadyRead: true,
+        },
+        {
+          id: 5,
+          cover: "sergio_de_larrea.jpg",
+          author: "Sergio",
+          title: "De Larrea",
+          alreadyRead: false,
+        },
+        {
+          id: 8,
+          cover: "jean_montero.jpg",
+          author: "Jean",
+          title: "Montero",
+          alreadyRead: false,
+        },
+        {
+          id: 0,
+          cover: "brancou_badio.jpg",
+          author: "Brancou",
+          title: "Badio",
+          alreadyRead: true,
+        },
+        {
+          id: 6,
+          cover: "xabier_lopez_arostegui.jpg",
+          author: "Xabier",
+          title: "López-Arostegui",
+          alreadyRead: false,
+        },
+        {
+          id: 37,
+          cover: "semi_ojeleye.jpg",
+          author: "Semi",
+          title: "Ojeleye",
+          alreadyRead: true,
+        },
+        {
+          id: 2,
+          cover: "josep_puerto.jpg",
+          author: "Josep",
+          title: "Puerto",
+          alreadyRead: true,
+        },
+        {
+          id: 77,
+          cover: "nate_sestina.jpg",
+          author: "Nate",
+          title: "Sestina",
+          alreadyRead: false,
+        },
+        {
+          id: 4,
+          cover: "jaime_pradilla.jpg",
+          author: "Jaime",
+          title: "Pradilla",
+          alreadyRead: true,
+        },
+        {
+          id: 3,
+          cover: "nathan_reuvers.jpg",
+          author: "Nathan",
+          title: "Reuvers",
+          alreadyRead: false,
+        },
+        {
+          id: 24,
+          cover: "matt_costello.jpg",
+          author: "Matt",
+          title: "Costello",
+          alreadyRead: false,
+        },
+        {
+          id: 22,
+          cover: "ethan_happ.jpg",
+          author: "Ethan",
+          title: "Happ",
+          alreadyRead: true,
+        },
+      ];
+      let Mybooks = [...books];
       function createBooks(books) {
         for (let i = 0; books.length > i; i++) {
-          $("section").append(
-            "<div class='cardsContainer'></div>"
-            "<img src='imgs/" + books[i].id + "'>",
-            "<h1>" + books[i].title + "</h1>",
-            "<p>" + books[i].author + "</p>",
-            "<button type='button' class='Rb'> Remove</button>"
+          $(".cards-container").append(
+            "<div class='card' id='" + books[i].id + "'>" +
+            "<img src='imgs/" + books[i].cover + "'>" +
+            "<h1>" + books[i].title + "</h1>" +
+            "<p>" + books[i].author + "</p>" +
+            "<button type='button' class='Rb'> Remove</button>" +
+            "</div>"
           );
+          $(".Rb").click(function () {
+
+            let cardDelete = books.findIndex(libro => libro.id == $(`${this}:parent:first`).attr("id"));
+            console.log(cardDelete);
+
+          })
         }
       }
-      createBooks(books)
-    </script>
-  </head>
+      function add_class(books) {
+        for (let i = 0; books.length > i; i++) {
+          if (books[i].alreadyRead) {
+            $(`.card:eq(${i})`).addClass("read");
+          } else {
+            $(`.card:eq(${i})`).addClass("not-read");
+          }
+        }
+      }
+      createBooks(books);
+      add_class(books);
+      function cleanContanier() {
+        $('section').html("")
+      }
+      let buttonOrdAuthor = document.getElementById("orderAuthor");
+      let buttonOrdId = document.getElementById("orderID");
+      let removeFilters = document.getElementById("remove-filters-btn");
+      let selectRead = document.getElementById("read");
+      let inputTitle = document.getElementById("title");
+      let option = document.querySelectorAll("option");
+      let newBooks = [...books];
+      let iFid = false;
+      let iFauthor = false;
+      function orderByAuthor(newBooks) {
+        newBooks.sort((a, b) => {
+          if (a.author > b.author) {
+            return 1;
+          } else if (a.author < b.author) {
+            return -1;
+          } else {
+            return 0;
+          }
+        })
+        return newBooks;
+      }
+      function orderById(newBooks) {
+        newBooks.sort((a, b) => a.id - b.id);
+        return newBooks;
+      }
 
-  <body>
-    <div class="page-container">
-      <!-- Menú lateral -->
-      <aside class="sidebar">
-        <h2>Filtros</h2>
+      buttonOrdAuthor.onclick = (e) => {
+        iFauthor = true;
+        cleanContanier();
+        if (iFid === true) {
+          createBooks(orderById(orderByAuthor(newBooks)));
+        } else {
+          createBooks(orderByAuthor(newBooks));
+        }
+      }
 
-        <div class="filter-group">
-          <label for="max-price">Max price</label>
-          <input
-            type="number"
-            id="max-price"
-            author="max-price"
-            placeholder="Ej: 1000"
-          />
-        </div>
+      buttonOrdId.onclick = (e) => {
+        iFid = true;
+        iFauthor = true;
+        cleanContanier();
+        if (iFauthor === true) {
+          createBooks(orderByAuthor(orderById(newBooks)));
+        } else {
+          createBooks(orderById(newBooks));
+        }
+      }
+      removeFilters.onclick = (e) => {
+        iFid = false;
+        selectRead[0].selected = true;
+        cleanContanier();
+        createBooks(books);
+        add_class(books);
 
-        <div class="filter-group">
-          <label for="processor-select">Processor</label>
-          <!-- Este select se rellenará dinámicamente con JS -->
-          <select id="processor-select" author="processor-select"></select>
-        </div>
+      }
+      inputTitle.addEventListener("input", allFilters);
+      selectRead.onchange = allFilters;
 
-        <div class="filter-actions">
-          <button id="filter-btn" type="button">Filter</button>
-          <button id="remove-filters-btn" type="button">Remove filters</button>
-        </div>
 
-        <div class="order-section">
-          <p>
-            Order by:
-            <button class="order-link" data-order="brand" id="orderBrand">
-              brand
-            </button>
-            |
-            <button class="order-link" data-order="RAM" id="orderRam">
-              RAM
-            </button>
-          </p>
-        </div>
-      </aside>
 
-      <!-- Contenido principal -->
-      <main class="main-content">
-        <h1>My Book List</h1>
+      function allFilters() {
+        let booksFilter = [...books];
+        //title
+        if (inputTitle.value !== "") {
+          booksFilter = booksFilter.filter(book => book.title.toLowerCase().includes(inputTitle.value.toLowerCase()));
+        }
+        if (selectRead.value !== "") {
+          booksFilter = booksFilter.filter(book => String(book.alreadyRead) === selectRead.value);
+        }
+        cleanContanier();
+        createBooks(booksFilter);
+        add_class(booksFilter);
 
-        <!-- Contenedor de cards -->
-        <section class="cards-container" id="cards-container"></section>
+      }
 
-        <!-- Paginación -->
-        <div class="pagination">
-          <button type="button" class="page-btn" id="back">&lt;</button>
-          <span class="page-info">Page 1 of 3</span>
-          <button type="button" class="page-btn" id="next">&gt;</button>
-        </div>
-      </main>
-    </div>
-  </body>
+
+    });
+
+
+  </script>
+</head>
+
+<body>
+  <div class="page-container">
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+      <h2>Filtros</h2>
+
+      <div class="filter-group">
+        <label for="title">Title </label>
+        <input type="text" id="title" name="title" />
+      </div>
+      <div class="filter-group">
+        <label for="title">Read </label>
+        <select name="read" id="read">
+          <option value="" disabled selected>Selecciona</option>
+          <option value="true">Si</option>
+          <option value="false">NO</option>
+        </select>
+
+      </div>
+      <!-- Botones -->
+      <div class="filter-actions">
+        <button id="filter-btn" type="button">Filter</button>
+        <button id="remove-filters-btn" type="button">Remove filters</button>
+      </div>
+
+      <div class="order-section">
+        <p>
+          Order by:
+          <button class="order-link" data-order="brand" id="orderAuthor">
+            Author
+          </button>
+          |
+          <button class="order-link" data-order="RAM" id="orderID">
+            ID Card
+          </button>
+        </p>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <h1>My Book List</h1>
+
+      <!-- Contenedor de cards -->
+      <section class="cards-container" id="cards-container"></section>
+
+
+
+    </main>
+  </div>
+</body>
+
 </html>

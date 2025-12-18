@@ -112,6 +112,9 @@ body {
   max-width: 280px;
   flex: 1 1 240px;           /* Permite que se adapten y salten de línea */
 }
+img {
+  width: 100%;
+}
 
 .card p {
   margin-bottom: 4px;

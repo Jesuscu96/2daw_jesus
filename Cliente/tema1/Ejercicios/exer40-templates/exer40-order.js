@@ -210,7 +210,7 @@ window.onload = function () {
             count = 0;
         }
         cleanContainer();
-        drawAllPlayers(players);
+        drawAllPlayers(orderedPlayers);
         
     })
     let orderPosAgeBtn = document.getElementById("b_pos-age");
