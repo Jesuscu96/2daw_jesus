@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.7.1.js" type="text/JavaScript"></script>
+    <script>
+        $(document).ready(function () {
+            let books = [
+                {
+                    id: 1,
+                    cover: "comillas.jpeg",
+                    title: "The Great Gatsby",
+                    author: "F. Scott Fitzgerald",
+                    alreadyRead: true
+                },
+                {
+                    id: 2,
+                    cover: "oviedo.jpeg",
+                    title: "To Kill a Mockingbird",
+                    author: "Harper Lee",
+                    alreadyRead: false
+                },
+                {
+                    id: 3,
+                    cover: "ribadesella.jpeg",
+                    title: "1984",
+                    author: "George Orwell",
+                    alreadyRead: true
+                },
+                {
+                    id: 4,
+                    cover: "comillas.jpeg",
+                    title: "The Hobbit",
+                    author: "J.R.R. Tolkien",
+                    alreadyRead: false
+                },
+                {
+                    id: 5,
+                    cover: "santander.jpeg",
+                    title: "Pride and Prejudice",
+                    author: "Jane Austen",
+                    alreadyRead: true
+                }
+            ];
+
+            $("main").append("<div class='books'></div>");
+
+            function drawBook (book) {
+                $(`.books`).append(`<div class='book' id='${book.id}'></div>`);
+                $(`.book#${book.id}`).append(`<img src='../img/${book.cover}'>`);
+                $(`.book#${book.id}`).append(`<h1>${book.title}</h1>`);
+                $(`.book#${book.id}`).append(`<p>${book.author}</p>`);
+                $(`.book#${book.id}`).append(`<button id='rbn'>Remove</button>`);
+                if(book.alreadyRead) {
+                   $(`.book#${book.id}`).addClass(`already_read`); 
+                } else {
+                    $(`.book#${book.id}`).addClass(`not_read_yet`);
+                } 
+                $('#rbn').click(function() {
+                    removeCard(book.id);
+                    cleanContainer();
+                    drawCardBook(books)
+                })
+                
+
+            }
+            function drawCardBook(books) {
+                books.forEach((book) => {
+                    drawBook(book);                    
+                });
+            }
+            drawCardBook(books)
+            function removeCard (id) {
+                let idIndex = books.findIndex(bok => bok.id == id);
+                let delit = books.splice(idIndex, 1);
+            }
+          
+            function cleanContainer() {
+                $(".books").html("")
+            }
+
+            
+
+
+        })
+
+
+
+    </script>
+    <style>
+        .books {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+
+        }
+
+        .book {
+            border: 2px solid;
+            box-shadow: 1px 1px 1px 1px;
+            height: 400px;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        img {
+            width: 100%;
+            height: 50%;
+        }
+
+        .alreadyRead {
+            border: 2px solid blue;
+
+        }
+
+        .notReadYet {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1 class="title">My Book List</h1>
+
+    </main>
+
+
+
+
+
+</body>
+
+</html>
