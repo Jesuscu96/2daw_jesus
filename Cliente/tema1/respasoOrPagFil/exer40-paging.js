@@ -230,12 +230,20 @@ window.onload = function () {
         cleanContainer();
         search.value = "";
         position.value = 'all';
+        sortMode = '';
+        orderSurname = false;
+
+        // reset datos y página
+        filtro = [...players];
+        currentPage = 1;
+
         drawCards(pagination(currentPage));
     }
 
     function filter() {
         let searchText = search.value.trim().toLowerCase();
         let positionText = position.value.toLowerCase().trim();
+        filtro = [...players];
         if (searchText.length < 0) {
             filtro = filtro.filter(player => {
                 let fullName = player.name.toLowerCase() + " " + player.surname.toLowerCase()
@@ -245,7 +253,7 @@ window.onload = function () {
 
 
 
-        if (positionText !== 'all' || positionText !== '') {
+        if (positionText !== 'all' || positionText.length < 0 ) {
             filtro = filtro.filter(player => {
 
                 return player.position.toLowerCase().trim() === positionText;
@@ -273,13 +281,13 @@ window.onload = function () {
 
 
     let reset = document.querySelector('#reset')
-     reset.addEventListener("click", () => resetFilter());
+    reset.addEventListener("click", () => resetFilter());
     search.addEventListener("input", filter);
     position.addEventListener("change", filter);
     let bSurname = document.querySelector('#b_surname');
     bSurname.addEventListener("click", () => {
         orderSurname = true;   
-        applyFilters();        
+        filter();        
     });
 
 }
