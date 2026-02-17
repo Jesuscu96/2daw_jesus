@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Paging Players</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="exer40-paging.css">
+    <script src="exer40-paging.js"></script>
+</head>
+
+<body>
+    <div id="header">
+        <h1>TEAM MANAGEMENT</h1>
+        <label for="f_name">Name:</label>
+        <input type="text" name="f_name" placeholder="Enter player's name"> <br>
+        <select name="" id="position">
+            <option value="all" selected disabled>Select position</option>
+            <option value="Point Guard">Point Guard</option>
+            <option value="Shooting Guard">Shooting Guard</option>
+            <option value="Small Forward">Small Forward</option>
+            <option value="Power Forward">Power Forward</option>
+            <option value="Center/Forward">Center/Forward</option>
+            <option value="Center">Center</option>
+        </select>
+
+        Order by:<br>
+        <button id="b_surname">Surname</button>
+        <button id="b_age">Age</button>
+        <button id="reset">Reset Fileter</button>
+        <section>
+            <!-- Paging controls -->
+            <div id="controls">
+                <!-- Previous page button -->
+                <button id="back"> &lt; </button>
+                <!-- Info on current page -->
+                <span id="page-info"></span>
+                <!-- Next page button -->
+                <button id="next"> &gt; </button>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
